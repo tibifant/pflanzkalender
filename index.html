@@ -10,7 +10,7 @@
 
 <body>
   <entry id="jan">
-    <h2>Januar</h2>
+    <h2>Januar <button onclick="set_month(1)">➔</button></h2>
     <div class="table">
       <div class="sublist">
         <h3>Anzucht</h3>
@@ -39,7 +39,7 @@
   </entry>
 
   <entry id="feb">
-    <h2>Februar</h2>
+    <h2><button class="flipped" onclick="set_month(0)">➔</button> Februar <button onclick="set_month(2)">➔</button></h2>
     <div class="table">
       <div class="sublist">
         <h3>Anzucht</h3>
@@ -77,7 +77,7 @@
   </entry>
   
   <entry id="mar">
-    <h2>März</h2>
+    <h2><button class="flipped" onclick="set_month(1)">➔</button> März <button onclick="set_month(3)">➔</button></h2>
     <div class="table">
       <div class="sublist">
         <h3>Anzucht</h3>
@@ -118,7 +118,7 @@
   </entry>
   
   <entry id="apr">
-    <h2>April</h2>
+    <h2><button class="flipped" onclick="set_month(2)">➔</button> April <button onclick="set_month(4)">➔</button></h2>
     <div class="table">
       <div class="sublist">
         <h3>Anzucht</h3>
@@ -157,7 +157,7 @@
   </entry>
 
   <entry id="mai">
-    <h2>Mai</h2>
+    <h2><button class="flipped" onclick="set_month(3)">➔</button> Mai <button onclick="set_month(5)">➔</button></h2>
     <div class="table">
       <div class="sublist">
         <h3>Anzucht</h3>
@@ -194,7 +194,7 @@
   </entry>
 
   <entry id="jun">
-  <h2>Juni</h2>
+    <h2><button class="flipped" onclick="set_month(4)">➔</button> Juni <button onclick="set_month(6)">➔</button></h2>
     <div class="table">
       <div class="sublist">
         <h3>Anzucht</h3>
@@ -231,7 +231,7 @@
   </entry>
 
   <entry id="jul">
-    <h2>Juli</h2>
+    <h2><button class="flipped" onclick="set_month(5)">➔</button> Juli <button onclick="set_month(7)">➔</button></h2>
     <div class="table">
       <div class="sublist">
         <h3>Anzucht</h3>
@@ -275,7 +275,7 @@
   </entry>
 
   <entry id="aug">
-    <h2>August</h2>
+    <h2><button class="flipped" onclick="set_month(6)">➔</button> August <button onclick="set_month(8)">➔</button></h2>
     <div class="table">
       <div class="sublist">
         <h3>Anzucht</h3>
@@ -318,7 +318,7 @@
   </entry>
 
   <entry id="sep">
-    <h2>September</h2>
+    <h2><button class="flipped" onclick="set_month(7)">➔</button> September <button onclick="set_month(9)">➔</button></h2>
     <div class="table">
       <div class="sublist">
         <h3>Anzucht</h3>
@@ -360,7 +360,7 @@
   </entry>
 
   <entry id="okt">
-    <h2>Oktober</h2>
+    <h2><button class="flipped" onclick="set_month(8)">➔</button> Oktober <button onclick="set_month(10)">➔</button></h2>
     <div class="table">
       <div class="sublist">
         <h3>Anzucht</h3>
@@ -399,7 +399,7 @@
   </entry>
 
   <entry id="nov">
-    <h2>November</h2>
+    <h2><button class="flipped" onclick="set_month(9)">➔</button> November <button onclick="set_month(11)">➔</button></h2>
     <div class="table">
       <div class="sublist">
         <h3>Aussaat</h3>
@@ -425,7 +425,7 @@
   </entry>
 
   <entry id="dez">
-    <h2>Dezember</h2>
+    <h2><button class="flipped" onclick="set_month(10)">➔</button> Dezember</h2>
     <div class="table">
       <div class="sublist">
         <h3>Ernte</h3>
@@ -440,13 +440,22 @@
   </entry>
 
   <script>
+    const months = ["jan", "feb", "mar", "apr", "mai", "jun", "jul", "aug", "sep", "okt", "nov", "dez"];
+
+    let month;
+
+    function set_month(month_idx){
+      month = month_idx;
+      display_month();
+    }
+
     function display_month() {
-      const months = ["jan", "feb", "mar", "apr", "mai", "jun", "jul", "aug", "sep", "okt", "nov", "dez"];
 
       let date = new Date();
-      let month = months[date.getMonth()];
 
-      location.hash = "#" + month;
+      let _month = months[month ?? date.getMonth()];
+
+      location.hash = "#" + _month;
 
       setTimeout(display_month, 1000 * 60); // call me again in 60 seconds.
     }
